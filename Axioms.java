@@ -32,17 +32,17 @@ class Axioms extends MatrixOperator{
             return false;
         }
     }
-    // Axiom b: v+w = w+v
+    // Axiom b: v+w = w+v (fixed)
     public boolean axiom_b(){
         int[][] vw = this.matrix_sum(this.matrix_v, matrix_w);
         int[][] wv = this.matrix_sum(this.matrix_w, matrix_v);
-        if(this.matrix_comparator(vw, wv)){
+        if(this.matrix_comparator(vw, wv) && this.ruler(vw) && this.ruler(wv)){
             return true;
         }else{
             return false;
         }
     }
-    // Axiom c: v+(w+z) = (v+w)+z
+    // Axiom c: v+(w+z) = (v+w)+z (fixed)
     public boolean axiom_c(){
         // Group sums
         int[][] wz  = this.matrix_sum(this.matrix_w, this.matrix_z);
@@ -51,7 +51,7 @@ class Axioms extends MatrixOperator{
         int[][] vw = this.matrix_sum(this.matrix_v, this.matrix_w);
         int[][] _vwz = this.matrix_sum(vw, this.matrix_z);
 
-        if(this.matrix_comparator(vwz, _vwz)){
+        if(this.matrix_comparator(vwz, _vwz) && this.ruler(vwz) && this.ruler(_vwz)){
             return true;
         }else{
             return true;
@@ -88,20 +88,20 @@ class Axioms extends MatrixOperator{
             return false;
         }
     }
-    // Axiom g: a(v+w) = av + aw
+    // Axiom g: a(v+w) = av + aw (fixed)
     public boolean axiom_g(int a){
         int[][] vw   = this.matrix_sum(this.matrix_v, this.matrix_w);
         int[][] a_vw = this.matrix_scalar(vw, a);
 
         int[][] avaw = this.matrix_sum(this.matrix_scalar(this.matrix_v, a),this.matrix_scalar(this.matrix_w, a));
 
-        if(this.matrix_comparator(a_vw, avaw)){
+        if(this.matrix_comparator(a_vw, avaw) && this.ruler(a_vw) && this.ruler(avaw)){
             return true;
         }else{
             return false;
         }
     }
-    // Axiom h: (a+b)v = av + bv
+    // Axiom h: (a+b)v = av + bv (fixed)
     public boolean axiom_h(int a, int b){
         int ab = a+b;
         int[][] ab_v = this.matrix_scalar(this.matrix_v, ab);
@@ -110,13 +110,13 @@ class Axioms extends MatrixOperator{
         int [][] bv   = this.matrix_scalar(this.matrix_v, b);
         int [][] avbv = this.matrix_sum(av, bv);
 
-        if(this.matrix_comparator(ab_v, avbv)){
+        if(this.matrix_comparator(ab_v, avbv) && this.ruler(ab_v) && this.ruler(avbv)){
             return true;
         }else{
             return true;
         }
     }    
-    // Axiom i: a(bv) = (ab)v
+    // Axiom i: a(bv) = (ab)v (fixed)
     public boolean axiom_i(int a, int b){
         int a_b = a*b;
 
@@ -125,7 +125,7 @@ class Axioms extends MatrixOperator{
 
         int[][] _a_b_v = this.matrix_scalar(this.matrix_v, a_b);
 
-        if(this.matrix_comparator(a_b_v, _a_b_v)){
+        if(this.matrix_comparator(a_b_v, _a_b_v) && this.ruler(a_b_v) && this.ruler(_a_b_v)){
             return true;
         }else{
             return true;
