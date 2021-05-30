@@ -1,3 +1,4 @@
+package src;
 /**
  * Title:            Axioms
  * Files:            Axioms.java
@@ -7,7 +8,7 @@
  * Email:            alt.ocaranza@gmail.co
  * Coments from:     http://pages.cs.wisc.edu/~cs302/resources/guides/commenting.html
  */
-class Axioms extends MatrixOperator{
+public class Axioms extends MatrixOperator{
     public Axioms(){
         super();
     }

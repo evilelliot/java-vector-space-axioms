@@ -1,3 +1,5 @@
+import src.Axioms;
+
 /**
  * Title:            Main class
  * Files:            Main.java
@@ -13,7 +15,7 @@ public class Main {
         int[][] mw = {{3,-2},{2,-2}};
         int[][] mz = {{1,7},{2,7}};
         Axioms axioms = new Axioms(mv, mw, mz, 2);
-
+        // Basic example
         if(axioms.evaluate(2, 5) == false){
             System.out.println("No es un espacio vectorial.");
         }
